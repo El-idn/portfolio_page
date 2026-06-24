@@ -1,29 +1,52 @@
 export type ProjectCategory = "Fintech" | "AI" | "Full Stack";
+export type ProjectStatus = "concept-demo" | "shipped";
 
 export type Project = {
   id: string;
   title: string;
   description: string;
   category: ProjectCategory;
+  status: ProjectStatus;
   technologies: string[];
-  metrics: { label: string; value: string }[];
+  highlights: { label: string; value: string }[];
   caseStudySlug?: string;
-  variant: "banking" | "ai" | "education" | "wallet";
+  repoUrl?: string;
+  variant: "banking" | "ai" | "education" | "wallet" | "hero";
 };
 
 export const projectCategories: ProjectCategory[] = ["Fintech", "AI", "Full Stack"];
 
 export const projects: Project[] = [
   {
+    id: "portfolio-site",
+    title: "Portfolio Landing Page",
+    description:
+      "This site — a React + Vite portfolio with case studies, command menu, and dark-mode design system, deployed on Vercel.",
+    category: "Full Stack",
+    status: "shipped",
+    technologies: ["React", "TypeScript", "Vite", "Tailwind", "Framer Motion"],
+    highlights: [
+      { label: "Stack", value: "React + Vite" },
+      { label: "UI", value: "Design system" },
+      { label: "Features", value: "Case studies" },
+      { label: "Deploy", value: "Vercel" },
+    ],
+    repoUrl: "https://github.com/El-idn/portfolio_page",
+    variant: "hero",
+  },
+  {
     id: "open-banking",
     title: "Open Banking Dashboard",
     description:
-      "Unified financial data platform connecting multiple bank APIs with real-time transaction analytics for product teams.",
+      "Concept dashboard exploring unified financial data views, bank API integration patterns, and analytics UI for fintech products.",
     category: "Fintech",
+    status: "concept-demo",
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Plaid API"],
-    metrics: [
-      { label: "API latency", value: "<120ms" },
-      { label: "Institutions", value: "40+" },
+    highlights: [
+      { label: "Focus", value: "Dashboard UI" },
+      { label: "Patterns", value: "API integration" },
+      { label: "Layout", value: "Responsive" },
+      { label: "Deploy", value: "Vercel" },
     ],
     caseStudySlug: "open-banking-dashboard",
     variant: "banking",
@@ -32,12 +55,15 @@ export const projects: Project[] = [
     id: "ai-pm-assistant",
     title: "AI Product Management Assistant",
     description:
-      "SaaS copilot that turns customer feedback, specs, and metrics into prioritized roadmaps and release notes.",
+      "Concept SaaS copilot for turning feedback and specs into roadmaps — exploring streaming AI UI, RAG workflows, and copilot UX patterns.",
     category: "AI",
+    status: "concept-demo",
     technologies: ["Next.js", "OpenAI", "Supabase", "Tailwind", "Vercel"],
-    metrics: [
-      { label: "Time saved", value: "35%" },
-      { label: "Teams onboarded", value: "18" },
+    highlights: [
+      { label: "Focus", value: "Streaming UI" },
+      { label: "Workflow", value: "RAG pipeline" },
+      { label: "Backend", value: "Supabase + OpenAI" },
+      { label: "Deploy", value: "Vercel" },
     ],
     caseStudySlug: "ai-product-management-assistant",
     variant: "ai",
@@ -46,12 +72,15 @@ export const projects: Project[] = [
     id: "education-quiz",
     title: "Education Quiz Platform",
     description:
-      "Adaptive learning platform with live assessments, instructor dashboards, and performance insights at scale.",
+      "Concept learning platform with live assessments and instructor dashboards — exploring real-time quiz flows and performance views.",
     category: "Full Stack",
+    status: "concept-demo",
     technologies: ["React", "GraphQL", "Redis", "AWS", "Prisma"],
-    metrics: [
-      { label: "Active learners", value: "25K+" },
-      { label: "Uptime", value: "99.9%" },
+    highlights: [
+      { label: "Focus", value: "Live quiz flow" },
+      { label: "Views", value: "Instructor dashboard" },
+      { label: "API", value: "GraphQL schema" },
+      { label: "Deploy", value: "Vercel" },
     ],
     variant: "education",
   },
@@ -59,12 +88,15 @@ export const projects: Project[] = [
     id: "fintech-wallet",
     title: "Fintech Wallet System",
     description:
-      "Cross-platform digital wallet with instant transfers, spending insights, and compliance-ready KYC flows — built with React Native for iOS and Android.",
+      "Concept cross-platform wallet exploring instant transfers, spending insights, and KYC flow screens — built with React Native for iOS and Android.",
     category: "Fintech",
+    status: "concept-demo",
     technologies: ["React Native", "NestJS", "Stripe", "Kafka", "Docker"],
-    metrics: [
-      { label: "Transactions/mo", value: "1.2M" },
-      { label: "Fraud reduction", value: "28%" },
+    highlights: [
+      { label: "Focus", value: "React Native UI" },
+      { label: "Flows", value: "KYC screens" },
+      { label: "Platform", value: "Cross-platform" },
+      { label: "Deploy", value: "Vercel" },
     ],
     variant: "wallet",
   },

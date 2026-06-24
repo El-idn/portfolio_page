@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Activity, BarChart3, Code2, CreditCard, Sparkles } from "lucide-react";
+import { BarChart3, Code2, CreditCard, Layers, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -7,43 +7,60 @@ type DashboardVariant = "banking" | "ai" | "education" | "wallet" | "hero";
 
 const variantConfig: Record<
   DashboardVariant,
-  { title: string; metric: string; change: string; bars: number[] }
+  {
+    title: string;
+    headline: string;
+    subtitle: string;
+    tileA: { label: string; value: string };
+    tileB: { label: string; value: string };
+    bars: number[];
+  }
 > = {
   hero: {
-    title: "Product Analytics",
-    metric: "$2.4M",
-    change: "+18.2%",
+    title: "UI Preview",
+    headline: "Concept build",
+    subtitle: "Portfolio demo",
+    tileA: { label: "Components", value: "Screens" },
+    tileB: { label: "Features", value: "Modules" },
     bars: [40, 65, 45, 80, 55, 90, 70],
   },
   banking: {
-    title: "Account Overview",
-    metric: "$128,450",
-    change: "+4.1%",
+    title: "Dashboard view",
+    headline: "Account module",
+    subtitle: "Illustrative UI",
+    tileA: { label: "Views", value: "Analytics" },
+    tileB: { label: "Patterns", value: "Data tables" },
     bars: [30, 50, 45, 70, 60, 75, 65],
   },
   ai: {
-    title: "Roadmap Insights",
-    metric: "24 signals",
-    change: "Prioritized",
+    title: "Copilot panel",
+    headline: "Roadmap module",
+    subtitle: "Illustrative UI",
+    tileA: { label: "Workflow", value: "RAG flow" },
+    tileB: { label: "Interface", value: "Streaming" },
     bars: [55, 40, 75, 50, 85, 60, 95],
   },
   education: {
-    title: "Learner Progress",
-    metric: "87%",
-    change: "+12%",
+    title: "Quiz dashboard",
+    headline: "Learner module",
+    subtitle: "Illustrative UI",
+    tileA: { label: "Flows", value: "Live quiz" },
+    tileB: { label: "Views", value: "Instructor" },
     bars: [35, 55, 50, 68, 72, 80, 88],
   },
   wallet: {
-    title: "Wallet Activity",
-    metric: "$3,240",
-    change: "-2.3%",
+    title: "Wallet screens",
+    headline: "Mobile module",
+    subtitle: "Illustrative UI",
+    tileA: { label: "Platform", value: "iOS · Android" },
+    tileB: { label: "Flows", value: "KYC · Pay" },
     bars: [60, 45, 70, 40, 55, 65, 50],
   },
 };
 
 function MiniChart({ bars }: { bars: number[] }) {
   return (
-    <div className="flex h-16 items-end gap-1">
+    <div className="flex h-16 items-end gap-1" aria-hidden>
       {bars.map((height, index) => (
         <div
           key={index}
@@ -76,6 +93,7 @@ export function DashboardMockup({
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="border-border bg-card relative overflow-hidden rounded-2xl border shadow-2xl"
+        aria-hidden
       >
         <div className="border-border flex items-center gap-2 border-b px-4 py-3">
           <div className="flex gap-1.5">
@@ -83,14 +101,14 @@ export function DashboardMockup({
             <span className="size-2.5 rounded-full bg-yellow-400/80" />
             <span className="size-2.5 rounded-full bg-green-400/80" />
           </div>
-          <span className="text-muted-foreground ml-2 text-xs">dashboard.app</span>
+          <span className="text-muted-foreground ml-2 text-xs">preview.local</span>
         </div>
         <div className={cn("space-y-4 p-4", compact && "p-3")}>
           <div className="flex items-start justify-between">
             <div>
               <p className="text-muted-foreground text-xs">{config.title}</p>
-              <p className="text-2xl font-semibold tracking-tight">{config.metric}</p>
-              <p className="text-primary text-xs font-medium">{config.change}</p>
+              <p className="text-lg font-semibold tracking-tight">{config.headline}</p>
+              <p className="text-primary text-xs font-medium">{config.subtitle}</p>
             </div>
             <div className="bg-primary/10 text-primary rounded-lg p-2">
               {variant === "ai" ? (
@@ -105,12 +123,12 @@ export function DashboardMockup({
           <MiniChart bars={config.bars} />
           <div className="grid grid-cols-2 gap-2">
             <div className="bg-muted/50 rounded-lg p-2">
-              <p className="text-muted-foreground text-[10px]">Active users</p>
-              <p className="text-sm font-medium">12.4K</p>
+              <p className="text-muted-foreground text-[10px]">{config.tileA.label}</p>
+              <p className="text-sm font-medium">{config.tileA.value}</p>
             </div>
             <div className="bg-muted/50 rounded-lg p-2">
-              <p className="text-muted-foreground text-[10px]">Conversion</p>
-              <p className="text-sm font-medium">6.8%</p>
+              <p className="text-muted-foreground text-[10px]">{config.tileB.label}</p>
+              <p className="text-sm font-medium">{config.tileB.value}</p>
             </div>
           </div>
         </div>
@@ -123,12 +141,13 @@ export function DashboardMockup({
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="border-border bg-card absolute -right-4 -bottom-6 w-44 rounded-xl border p-3 shadow-xl"
+            aria-hidden
           >
             <div className="mb-2 flex items-center gap-2">
-              <Activity className="text-primary size-4" />
-              <span className="text-xs font-medium">Live sync</span>
+              <Layers className="text-primary size-4" />
+              <span className="text-xs font-medium">UI preview</span>
             </div>
-            <p className="text-muted-foreground text-[10px]">42 institutions connected</p>
+            <p className="text-muted-foreground text-[10px]">Illustrative component layer</p>
           </motion.div>
 
           <motion.div
@@ -136,13 +155,14 @@ export function DashboardMockup({
             animate={{ opacity: 1, x: 0, y: 0 }}
             transition={{ delay: 0.35, duration: 0.5 }}
             className="border-border bg-card absolute -top-4 -left-4 w-48 rounded-xl border p-3 shadow-xl"
+            aria-hidden
           >
             <div className="mb-2 flex items-center gap-2">
               <Code2 className="text-primary size-4" />
-              <span className="text-xs font-medium">API health</span>
+              <span className="text-xs font-medium">API layer</span>
             </div>
             <pre className="text-muted-foreground overflow-hidden text-[10px] leading-relaxed">
-              {`GET /v1/accounts\n200 · 98ms`}
+              {`GET /v1/accounts\nillustrative route`}
             </pre>
           </motion.div>
         </>

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { caseStudies } from "@/data/caseStudies";
+import { ConceptDemoBadge } from "@/components/shared/MetricBadge";
 import { DashboardMockup } from "@/components/shared/DashboardMockup";
 import { Section, SectionHeader } from "@/components/layout/Section";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -14,8 +15,8 @@ export function CaseStudiesSection() {
     <Section id="case-studies">
       <SectionHeader
         eyebrow="Case Studies"
-        title="Deep dives into product and engineering decisions"
-        description="How complex problems were framed, architected, and shipped with measurable outcomes."
+        title="Technical walkthroughs of concept builds"
+        description="Architecture, UI, and engineering decisions behind portfolio demos — not production postmortems."
       />
 
       <div className="grid gap-6 lg:grid-cols-2">
@@ -30,9 +31,10 @@ export function CaseStudiesSection() {
             <Link to={`/case-studies/${study.slug}`} className="group block h-full">
               <Card className="h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
                 <CardHeader className="space-y-3">
+                  <ConceptDemoBadge />
                   <CardTitle className="text-2xl">{study.title}</CardTitle>
                   <p className="text-muted-foreground text-sm leading-relaxed">{study.summary}</p>
-                  <p className="text-primary text-sm font-medium">{study.outcome}</p>
+                  <p className="text-primary text-sm font-medium">{study.buildSummary}</p>
                 </CardHeader>
                 <CardContent>
                   <DashboardMockup variant={study.variant} compact />

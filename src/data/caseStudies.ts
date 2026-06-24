@@ -2,7 +2,8 @@ export type CaseStudy = {
   slug: string;
   title: string;
   summary: string;
-  outcome: string;
+  status: "concept-demo";
+  buildSummary: string;
   problem: string;
   painPoints: string[];
   architecture: string[];
@@ -10,7 +11,7 @@ export type CaseStudy = {
   uxProcess: string[];
   scalability: string[];
   technologies: string[];
-  outcomes: { label: string; value: string }[];
+  highlights: { label: string; value: string }[];
   variant: "banking" | "ai";
 };
 
@@ -18,14 +19,16 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "open-banking-dashboard",
     title: "Open Banking Dashboard",
+    status: "concept-demo",
     summary:
-      "A unified financial intelligence layer for product teams managing multi-institution data pipelines.",
-    outcome: "Reduced financial data aggregation time by 60% across 40+ institutions.",
+      "A concept dashboard exploring open banking data aggregation UX and frontend architecture for multi-institution financial views.",
+    buildSummary:
+      "A portfolio concept exploring how product teams might visualize fragmented bank API data through a unified, role-based dashboard.",
     problem:
-      "Product teams needed a single view of customer financial behavior across fragmented bank APIs, each with different auth flows, data schemas, and rate limits.",
+      "This concept explores how product teams could gain a single view of customer financial behavior across fragmented bank APIs — each with different auth flows, data schemas, and rate limits.",
     painPoints: [
       "Manual reconciliation across disconnected bank integrations",
-      "Inconsistent transaction categorization hurting analytics accuracy",
+      "Inconsistent transaction categorization affecting analytics clarity",
       "Slow onboarding when adding new financial institutions",
       "No shared UI patterns for compliance-sensitive financial data",
     ],
@@ -42,9 +45,9 @@ export const caseStudies: CaseStudy[] = [
       "Accessible charting for trend analysis and anomaly detection",
     ],
     uxProcess: [
-      "Shadowed finance ops workflows to map critical decision paths",
+      "Designed for finance ops workflows and critical decision paths",
       "Prototyped dashboard IA with progressive disclosure for power users",
-      "Ran usability tests on transaction drill-down and export flows",
+      "Explored transaction drill-down and export flow interactions",
       "Established a design system for currency, status, and risk indicators",
     ],
     scalability: [
@@ -63,22 +66,24 @@ export const caseStudies: CaseStudy[] = [
       "AWS",
       "Terraform",
     ],
-    outcomes: [
-      { label: "Aggregation time", value: "-60%" },
-      { label: "Institutions supported", value: "40+" },
-      { label: "Dashboard load", value: "<1.2s" },
-      { label: "Support tickets", value: "-45%" },
+    highlights: [
+      { label: "Deliverable", value: "Dashboard UI" },
+      { label: "Deliverable", value: "Data normalization layer" },
+      { label: "Deliverable", value: "Role-based views" },
+      { label: "Deploy", value: "Vercel" },
     ],
     variant: "banking",
   },
   {
     slug: "ai-product-management-assistant",
     title: "AI Product Management Assistant",
+    status: "concept-demo",
     summary:
-      "An AI copilot that transforms scattered product signals into actionable roadmaps and release documentation.",
-    outcome: "Cut roadmap planning cycles from two weeks to three days for early adopters.",
+      "A concept AI copilot exploring how scattered product signals could become actionable roadmaps and release documentation.",
+    buildSummary:
+      "A portfolio concept demonstrating streaming AI UI, citation-first copilot patterns, and RAG workflow architecture for product teams.",
     problem:
-      "PM teams were drowning in feedback across Slack, support tickets, and analytics — with no reliable way to synthesize signals into prioritized work.",
+      "This concept explores how PM teams drowning in feedback across Slack, support tickets, and analytics might synthesize signals into prioritized work with traceable AI outputs.",
     painPoints: [
       "Roadmap debates driven by anecdotes instead of structured evidence",
       "Hours spent writing PRDs and release notes from scratch",
@@ -98,10 +103,10 @@ export const caseStudies: CaseStudy[] = [
       "Optimistic UI for collaborative roadmap editing",
     ],
     uxProcess: [
-      "Interviewed PMs to define high-trust AI interaction patterns",
-      "Designed citation-first layouts to reduce hallucination anxiety",
-      "Iterated on prompt templates exposed as guided workflows",
-      "Built onboarding that demonstrates value in under five minutes",
+      "Designed high-trust AI interaction patterns for PM workflows",
+      "Built citation-first layouts to surface source traceability",
+      "Exposed prompt templates as guided, editable workflows",
+      "Prototyped onboarding that demonstrates core value quickly",
     ],
     scalability: [
       "Async job queue for large document ingestion batches",
@@ -118,11 +123,11 @@ export const caseStudies: CaseStudy[] = [
       "Tailwind CSS",
       "Vercel",
     ],
-    outcomes: [
-      { label: "Planning cycle", value: "-78%" },
-      { label: "Teams onboarded", value: "18" },
-      { label: "Doc drafting time", value: "-65%" },
-      { label: "User satisfaction", value: "4.7/5" },
+    highlights: [
+      { label: "Deliverable", value: "Streaming copilot UI" },
+      { label: "Deliverable", value: "RAG workflow" },
+      { label: "Deliverable", value: "Citation interface" },
+      { label: "Deploy", value: "Vercel" },
     ],
     variant: "ai",
   },

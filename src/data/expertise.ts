@@ -69,7 +69,7 @@ export const expertiseAreas: ExpertiseArea[] = [
   {
     title: "Product Design Thinking",
     description:
-      "Translating user problems into shippable increments with measurable product outcomes.",
+      "Translating user problems into shippable increments with clear engineering tradeoffs.",
     icon: Palette,
   },
 ];

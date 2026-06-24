@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
-import { ArrowUpRight } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
 import type { Project } from "@/data/projects";
 import { DashboardMockup } from "@/components/shared/DashboardMockup";
-import { MetricBadge, TechBadges } from "@/components/shared/MetricBadge";
+import {
+  HighlightBadge,
+  ProjectStatusBadge,
+  TechBadges,
+} from "@/components/shared/MetricBadge";
 import { Badge } from "@/components/ui/badge";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -20,10 +24,13 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       <CardHeader className="space-y-3">
         <div className="flex items-start justify-between gap-3">
           <div className="space-y-2">
-            <Badge variant="secondary">{project.category}</Badge>
+            <div className="flex flex-wrap gap-2">
+              <ProjectStatusBadge status={project.status} />
+              <Badge variant="secondary">{project.category}</Badge>
+            </div>
             <CardTitle className="text-xl">{project.title}</CardTitle>
           </div>
-          {project.caseStudySlug && (
+          {(project.caseStudySlug || project.repoUrl) && (
             <ArrowUpRight className="text-muted-foreground group-hover:text-primary size-5 shrink-0 transition-colors" />
           )}
         </div>
@@ -31,16 +38,33 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       </CardHeader>
       <CardContent className="space-y-4">
         <DashboardMockup variant={project.variant} compact className="pointer-events-none" />
-        <div className="grid grid-cols-2 gap-2">
-          {project.metrics.map((metric) => (
-            <MetricBadge key={metric.label} label={metric.label} value={metric.value} />
-          ))}
+        <div className="space-y-2">
+          <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
+            Technical highlights
+          </p>
+          <div className="grid grid-cols-2 gap-2">
+            {project.highlights.map((highlight) => (
+              <HighlightBadge
+                key={`${highlight.label}-${highlight.value}`}
+                label={highlight.label}
+                value={highlight.value}
+              />
+            ))}
+          </div>
         </div>
         <TechBadges items={project.technologies} />
       </CardContent>
-      {project.caseStudySlug && (
-        <CardFooter>
-          <span className="text-primary text-sm font-medium">View case study</span>
+      {(project.caseStudySlug || project.repoUrl) && (
+        <CardFooter className="gap-4">
+          {project.caseStudySlug && (
+            <span className="text-primary text-sm font-medium">View case study</span>
+          )}
+          {project.repoUrl && (
+            <span className="text-muted-foreground group-hover:text-primary flex items-center gap-1.5 text-sm font-medium transition-colors">
+              <Github className="size-4" />
+              Source
+            </span>
+          )}
         </CardFooter>
       )}
     </Card>
@@ -61,6 +85,21 @@ export function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         <Link to={`/case-studies/${project.caseStudySlug}`} className="block h-full">
           {content}
         </Link>
+      </motion.div>
+    );
+  }
+
+  if (project.repoUrl) {
+    return (
+      <motion.div {...motionProps}>
+        <a
+          href={project.repoUrl}
+          target="_blank"
+          rel="noreferrer"
+          className="block h-full"
+        >
+          {content}
+        </a>
       </motion.div>
     );
   }

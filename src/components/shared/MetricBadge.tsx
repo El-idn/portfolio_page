@@ -1,11 +1,12 @@
+import type { ProjectStatus } from "@/data/projects";
 import { Badge } from "@/components/ui/badge";
 
-type MetricBadgeProps = {
+type HighlightBadgeProps = {
   label: string;
   value: string;
 };
 
-export function MetricBadge({ label, value }: MetricBadgeProps) {
+export function HighlightBadge({ label, value }: HighlightBadgeProps) {
   return (
     <div className="rounded-lg border border-border bg-muted/40 px-3 py-2">
       <p className="text-muted-foreground text-xs">{label}</p>
@@ -13,6 +14,9 @@ export function MetricBadge({ label, value }: MetricBadgeProps) {
     </div>
   );
 }
+
+/** @deprecated Use HighlightBadge */
+export const MetricBadge = HighlightBadge;
 
 export function TechBadges({ items }: { items: string[] }) {
   return (
@@ -25,3 +29,18 @@ export function TechBadges({ items }: { items: string[] }) {
     </div>
   );
 }
+
+export function ProjectStatusBadge({ status }: { status: ProjectStatus }) {
+  if (status === "shipped") {
+    return <Badge className="bg-primary text-primary-foreground">Live</Badge>;
+  }
+
+  return (
+    <Badge variant="outline" className="border-primary/30 text-primary">
+      Concept Demo
+    </Badge>
+  );
+}
+
+/** @deprecated Use ProjectStatusBadge */
+export const ConceptDemoBadge = () => <ProjectStatusBadge status="concept-demo" />;

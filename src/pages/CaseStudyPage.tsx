@@ -3,7 +3,11 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { getAdjacentCaseStudies, getCaseStudy } from "@/data/caseStudies";
 import { site } from "@/data/site";
 import { DashboardMockup } from "@/components/shared/DashboardMockup";
-import { MetricBadge, TechBadges } from "@/components/shared/MetricBadge";
+import {
+  ConceptDemoBadge,
+  HighlightBadge,
+  TechBadges,
+} from "@/components/shared/MetricBadge";
 import { Seo } from "@/components/shared/Seo";
 import { Section } from "@/components/layout/Section";
 import { Button } from "@/components/ui/button";
@@ -17,7 +21,7 @@ const sections = [
   { id: "frontend", title: "Frontend Challenges" },
   { id: "ux", title: "UI/UX Process" },
   { id: "scalability", title: "Scalability" },
-  { id: "outcomes", title: "Outcomes" },
+  { id: "highlights", title: "What I Built" },
 ] as const;
 
 export function CaseStudyPage() {
@@ -49,12 +53,15 @@ export function CaseStudyPage() {
 
         <div className="grid gap-10 lg:grid-cols-[1fr_0.9fr] lg:items-center">
           <div className="space-y-4">
-            <p className="text-primary text-sm font-medium uppercase">Case Study</p>
+            <div className="flex flex-wrap items-center gap-2">
+              <p className="text-primary text-sm font-medium uppercase">Case Study</p>
+              <ConceptDemoBadge />
+            </div>
             <h1 className="text-4xl font-semibold tracking-tight text-balance md:text-5xl">
               {study.title}
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">{study.summary}</p>
-            <p className="text-foreground text-base font-medium">{study.outcome}</p>
+            <p className="text-foreground text-base font-medium">{study.buildSummary}</p>
             <TechBadges items={study.technologies} />
           </div>
           <DashboardMockup variant={study.variant} />
@@ -130,11 +137,15 @@ export function CaseStudyPage() {
             </ul>
           </section>
 
-          <section id="outcomes" className="scroll-mt-28 space-y-4">
-            <h2 className="text-2xl font-semibold">Measurable Outcomes</h2>
+          <section id="highlights" className="scroll-mt-28 space-y-4">
+            <h2 className="text-2xl font-semibold">What I Built</h2>
             <div className="grid gap-3 sm:grid-cols-2">
-              {study.outcomes.map((outcome) => (
-                <MetricBadge key={outcome.label} label={outcome.label} value={outcome.value} />
+              {study.highlights.map((highlight) => (
+                <HighlightBadge
+                  key={`${highlight.label}-${highlight.value}`}
+                  label={highlight.label}
+                  value={highlight.value}
+                />
               ))}
             </div>
           </section>
