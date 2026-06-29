@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
 import { caseStudies } from "@/data/caseStudies";
-import { ConceptDemoBadge } from "@/components/shared/MetricBadge";
+import { ProjectStatusBadge } from "@/components/shared/MetricBadge";
 import { DashboardMockup } from "@/components/shared/DashboardMockup";
 import { Section, SectionHeader } from "@/components/layout/Section";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -31,7 +31,7 @@ export function CaseStudiesSection() {
             <Link to={`/case-studies/${study.slug}`} className="group block h-full">
               <Card className="h-full overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:border-primary/40 hover:shadow-lg hover:shadow-primary/5">
                 <CardHeader className="space-y-3">
-                  <ConceptDemoBadge />
+                  <ProjectStatusBadge status={study.status} />
                   <CardTitle className="text-2xl">{study.title}</CardTitle>
                   <p className="text-muted-foreground text-sm leading-relaxed">{study.summary}</p>
                   <p className="text-primary text-sm font-medium">{study.buildSummary}</p>

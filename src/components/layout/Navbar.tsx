@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   BookOpen,
+  ExternalLink,
   FolderKanban,
   Home,
   Mail,
@@ -11,6 +12,7 @@ import {
   User,
 } from "lucide-react";
 import { caseStudies } from "@/data/caseStudies";
+import { getLiveDemoProjects } from "@/data/projects";
 import { navItems, site } from "@/data/site";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
 import { scrollToSection, cn } from "@/lib/utils";
@@ -80,6 +82,23 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
               </CommandItem>
             );
           })}
+        </CommandGroup>
+        <CommandSeparator />
+        <CommandGroup heading="Live demos">
+          {getLiveDemoProjects().map((project) => (
+            <CommandItem
+              key={project.id}
+              onSelect={() => {
+                onOpenChange(false);
+                if (project.liveUrl) {
+                  window.open(project.liveUrl, "_blank", "noopener,noreferrer");
+                }
+              }}
+            >
+              <ExternalLink className="size-4" />
+              {project.title}
+            </CommandItem>
+          ))}
         </CommandGroup>
         <CommandSeparator />
         <CommandGroup heading="Case Studies">

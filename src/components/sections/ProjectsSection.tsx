@@ -18,8 +18,8 @@ export function ProjectsSection() {
     <Section id="projects">
       <SectionHeader
         eyebrow="Featured Work"
-        title="Concept builds exploring fintech, AI, and full stack engineering"
-        description="Portfolio demos that showcase UI craft, architecture thinking, and modern stack choices — deployed on Vercel."
+        title="Concept builds and live demos across fintech, AI, and full stack engineering"
+        description="Explore deployed Vercel demos and concept projects that showcase UI craft, architecture thinking, and modern stack choices."
       />
 
       <p className="text-muted-foreground border-border bg-muted/30 -mt-6 mb-8 rounded-lg border px-4 py-3 text-sm leading-relaxed">

@@ -1,11 +1,11 @@
 import { Link, useParams } from "react-router-dom";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import { getAdjacentCaseStudies, getCaseStudy } from "@/data/caseStudies";
 import { site } from "@/data/site";
 import { DashboardMockup } from "@/components/shared/DashboardMockup";
 import {
-  ConceptDemoBadge,
   HighlightBadge,
+  ProjectStatusBadge,
   TechBadges,
 } from "@/components/shared/MetricBadge";
 import { Seo } from "@/components/shared/Seo";
@@ -55,13 +55,21 @@ export function CaseStudyPage() {
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
               <p className="text-primary text-sm font-medium uppercase">Case Study</p>
-              <ConceptDemoBadge />
+              <ProjectStatusBadge status={study.status} />
             </div>
             <h1 className="text-4xl font-semibold tracking-tight text-balance md:text-5xl">
               {study.title}
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">{study.summary}</p>
             <p className="text-foreground text-base font-medium">{study.buildSummary}</p>
+            {study.liveUrl && (
+              <Button asChild size="lg">
+                <a href={study.liveUrl} target="_blank" rel="noreferrer">
+                  View live demo
+                  <ExternalLink className="size-4" />
+                </a>
+              </Button>
+            )}
             <TechBadges items={study.technologies} />
           </div>
           <DashboardMockup variant={study.variant} />

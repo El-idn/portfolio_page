@@ -5,14 +5,14 @@ export type SocialLink = {
 };
 
 export const site = {
-  name: "Amos Eden",
+  name: "Eden Amos",
   title: "Full Stack & React Native Mobile App Engineer",
   tagline:
     "Full Stack and React Native engineer exploring fintech and AI through concept products, portfolio demos, and production-quality code.",
   shortBio:
     "Product-focused engineer working across fintech, AI, and mobile — with an emphasis on scalable architecture, polished UI, and modern React ecosystems.",
   demoNote:
-    "Featured concept builds below are portfolio demos deployed on Vercel — engineered to demonstrate craft, architecture, and stack depth.",
+    "Projects with live demos are deployed on Vercel. Others are concept builds showcasing architecture and UI craft.",
   email: "amos.eden56@gmail.com",
   social: [
     { label: "GitHub", href: "https://github.com/El-idn", icon: "github" },
@@ -26,7 +26,7 @@ export const site = {
   ],
   statLabels: ["Fintech · AI · Mobile · Web", "React · RN · Node", "Vercel"],
   seo: {
-    title: "Amos Eden — Full Stack & React Native Engineer | Fintech & AI Products",
+    title: "Eden Amos — Full Stack & React Native Engineer | Fintech & AI Products",
     description:
       "Full Stack and React Native engineer showcasing fintech and AI work through portfolio demos, concept builds, and open-source projects on Vercel.",
     url: "https://amoseden.dev",

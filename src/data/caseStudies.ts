@@ -2,8 +2,9 @@ export type CaseStudy = {
   slug: string;
   title: string;
   summary: string;
-  status: "concept-demo";
+  status: "concept-demo" | "shipped";
   buildSummary: string;
+  liveUrl?: string;
   problem: string;
   painPoints: string[];
   architecture: string[];
@@ -19,7 +20,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "open-banking-dashboard",
     title: "Open Banking Dashboard",
-    status: "concept-demo",
+    status: "shipped",
+    liveUrl: "https://open-banking-dashboard-zeta.vercel.app/login",
     summary:
       "A concept dashboard exploring open banking data aggregation UX and frontend architecture for multi-institution financial views.",
     buildSummary:
@@ -77,7 +79,8 @@ export const caseStudies: CaseStudy[] = [
   {
     slug: "ai-product-management-assistant",
     title: "AI Product Management Assistant",
-    status: "concept-demo",
+    status: "shipped",
+    liveUrl: "https://ai-product-manager-flame.vercel.app/",
     summary:
       "A concept AI copilot exploring how scattered product signals could become actionable roadmaps and release documentation.",
     buildSummary:

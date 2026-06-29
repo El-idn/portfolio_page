@@ -11,6 +11,7 @@ export type Project = {
   highlights: { label: string; value: string }[];
   caseStudySlug?: string;
   repoUrl?: string;
+  liveUrl?: string;
   variant: "banking" | "ai" | "education" | "wallet" | "hero";
 };
 
@@ -38,9 +39,9 @@ export const projects: Project[] = [
     id: "open-banking",
     title: "Open Banking Dashboard",
     description:
-      "Concept dashboard exploring unified financial data views, bank API integration patterns, and analytics UI for fintech products.",
+      "Fintech dashboard deployed on Vercel — exploring unified financial data views, bank API integration patterns, and analytics UI.",
     category: "Fintech",
-    status: "concept-demo",
+    status: "shipped",
     technologies: ["React", "TypeScript", "Node.js", "PostgreSQL", "Plaid API"],
     highlights: [
       { label: "Focus", value: "Dashboard UI" },
@@ -49,15 +50,16 @@ export const projects: Project[] = [
       { label: "Deploy", value: "Vercel" },
     ],
     caseStudySlug: "open-banking-dashboard",
+    liveUrl: "https://open-banking-dashboard-zeta.vercel.app/login",
     variant: "banking",
   },
   {
     id: "ai-pm-assistant",
     title: "AI Product Management Assistant",
     description:
-      "Concept SaaS copilot for turning feedback and specs into roadmaps — exploring streaming AI UI, RAG workflows, and copilot UX patterns.",
+      "AI SaaS copilot deployed on Vercel — exploring streaming UI, RAG workflows, and copilot patterns for roadmap and spec generation.",
     category: "AI",
-    status: "concept-demo",
+    status: "shipped",
     technologies: ["Next.js", "OpenAI", "Supabase", "Tailwind", "Vercel"],
     highlights: [
       { label: "Focus", value: "Streaming UI" },
@@ -66,7 +68,25 @@ export const projects: Project[] = [
       { label: "Deploy", value: "Vercel" },
     ],
     caseStudySlug: "ai-product-management-assistant",
+    liveUrl: "https://ai-product-manager-flame.vercel.app/",
     variant: "ai",
+  },
+  {
+    id: "campus-vote",
+    title: "Campus Vote",
+    description:
+      "Live voting platform for campus elections — ballot flows, admin views, and real-time results, deployed on Vercel.",
+    category: "Full Stack",
+    status: "shipped",
+    technologies: ["React", "TypeScript", "Vercel", "Tailwind"],
+    highlights: [
+      { label: "Focus", value: "Voting flows" },
+      { label: "Views", value: "Admin dashboard" },
+      { label: "Deploy", value: "Vercel" },
+      { label: "Status", value: "Live" },
+    ],
+    liveUrl: "https://campus-vote-nine.vercel.app/",
+    variant: "education",
   },
   {
     id: "education-quiz",
@@ -101,3 +121,7 @@ export const projects: Project[] = [
     variant: "wallet",
   },
 ];
+
+export function getLiveDemoProjects() {
+  return projects.filter((project) => project.liveUrl);
+}
