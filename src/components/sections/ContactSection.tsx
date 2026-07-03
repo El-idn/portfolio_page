@@ -18,7 +18,7 @@ export function ContactSection() {
       <SectionHeader
         eyebrow="Contact"
         title="Let's build modern digital products."
-        description="Open to engineering leadership conversations, product collaborations, and high-impact freelance work."
+        description="Open to product collaborations, and high-impact freelance work."
         align="center"
       />
 

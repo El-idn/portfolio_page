@@ -1,140 +1,170 @@
+import { projects, type Project } from "@/data/projects";
+
 export type CaseStudy = {
   slug: string;
-  title: string;
+  projectId: string;
   summary: string;
-  status: "concept-demo" | "shipped";
   buildSummary: string;
-  liveUrl?: string;
   problem: string;
   painPoints: string[];
   architecture: string[];
   frontendChallenges: string[];
   uxProcess: string[];
   scalability: string[];
-  technologies: string[];
   highlights: { label: string; value: string }[];
-  variant: "banking" | "ai";
 };
 
 export const caseStudies: CaseStudy[] = [
   {
     slug: "open-banking-dashboard",
-    title: "Open Banking Dashboard",
-    status: "shipped",
-    liveUrl: "https://open-banking-dashboard-zeta.vercel.app/login",
+    projectId: "open-banking",
     summary:
-      "A concept dashboard exploring open banking data aggregation UX and frontend architecture for multi-institution financial views.",
+      "Live OpenBank NG demo on Vercel — a Nigerian open banking operations UI with executive dashboard, customer/KYC views, transactions, consents, and role-based access. All data is mocked via MSW.",
     buildSummary:
-      "A portfolio concept exploring how product teams might visualize fragmented bank API data through a unified, role-based dashboard.",
+      "Frontend-only portfolio demo: React 19, TypeScript, and Vite with no live backend or real banking integrations.",
     problem:
-      "This concept explores how product teams could gain a single view of customer financial behavior across fragmented bank APIs — each with different auth flows, data schemas, and rate limits.",
+      "Nigerian fintech ops teams need a single interface to monitor customers, accounts, transactions, open banking consents, and compliance workflows — this demo explores what that UI could look like.",
     painPoints: [
-      "Manual reconciliation across disconnected bank integrations",
-      "Inconsistent transaction categorization affecting analytics clarity",
-      "Slow onboarding when adding new financial institutions",
-      "No shared UI patterns for compliance-sensitive financial data",
+      "Customer, account, and transaction views often live in separate tools",
+      "Compliance and auditor roles need different visibility than admins or customers",
+      "Consent grants and revocations need clear audit trails in the UI",
+      "Dense financial tables and KPI dashboards must stay scannable on desktop and mobile",
     ],
     architecture: [
-      "Event-driven ingestion layer normalizing PSD2 and open banking payloads",
-      "Token vault with short-lived credentials and audit logging",
-      "Read-optimized analytics store with pre-aggregated daily rollups",
-      "BFF pattern isolating frontend from provider-specific API quirks",
+      "React 19 + TypeScript + Vite single-page application",
+      "MSW mock API layer with TanStack Query for data fetching and polling",
+      "React Router with role-based route guards (customer, admin, compliance, auditor)",
+      "Shadcn UI + Tailwind CSS v4 component system",
     ],
     frontendChallenges: [
-      "Designing dense financial tables that remain scannable on mobile",
-      "Real-time balance updates without layout shift or stale state",
-      "Role-based views for analysts, compliance, and executives",
-      "Accessible charting for trend analysis and anomaly detection",
+      "Role-based navigation and permission matrix across four demo roles",
+      "Executive dashboard with KPI cards, charts, and recent transaction feed",
+      "Transaction monitoring with search, filters, and CSV export",
+      "Login plus MFA verification flow before reaching the dashboard",
+      "Responsive layout with dark/light mode toggle",
     ],
     uxProcess: [
-      "Designed for finance ops workflows and critical decision paths",
-      "Prototyped dashboard IA with progressive disclosure for power users",
-      "Explored transaction drill-down and export flow interactions",
-      "Established a design system for currency, status, and risk indicators",
+      "Mapped core ops modules: dashboard, customers, accounts, transfers, transactions, consents",
+      "Designed customer profiles with KYC fields (BVN, NIN, tiers) and linked accounts",
+      "Built consent management with revoke flow and audit event visibility",
+      "Added Phase 2 modules: fraud center, audit logs, API monitoring, transfers, reports, and notifications",
     ],
     scalability: [
-      "Horizontal workers for webhook ingestion spikes",
-      "Caching strategy for institution metadata and exchange rates",
-      "Feature flags for gradual institution rollout",
-      "Observability dashboards tracking sync lag per provider",
-    ],
-    technologies: [
-      "React",
-      "TypeScript",
-      "Node.js",
-      "PostgreSQL",
-      "Redis",
-      "Plaid",
-      "AWS",
-      "Terraform",
+      "All data is mocked locally via MSW — no production backend in this demo",
+      "No live bank APIs, PSD2 integrations, or real authentication service",
+      "Demo credentials and a fixed MFA code (123456); header role switcher for permission demos",
+      "Deployed as a static SPA on Vercel with client-side routing",
     ],
     highlights: [
-      { label: "Deliverable", value: "Dashboard UI" },
-      { label: "Deliverable", value: "Data normalization layer" },
-      { label: "Deliverable", value: "Role-based views" },
-      { label: "Deploy", value: "Vercel" },
+      { label: "Live module", value: "Executive dashboard" },
+      { label: "Live module", value: "Customers & KYC" },
+      { label: "Live module", value: "Transactions & consents" },
+      { label: "Live module", value: "Fraud · Audit · Reports" },
     ],
-    variant: "banking",
   },
   {
     slug: "ai-product-management-assistant",
-    title: "AI Product Management Assistant",
-    status: "shipped",
-    liveUrl: "https://ai-product-manager-flame.vercel.app/",
+    projectId: "ai-pm-assistant",
     summary:
-      "A concept AI copilot exploring how scattered product signals could become actionable roadmaps and release documentation.",
+      "Live ProdPilot AI demo on Vercel — an AI product management workspace with dashboard KPIs, streaming PRD generation, copilot chat, and analytics views. Metrics are mocked; AI uses Groq when configured, otherwise simulated streaming.",
     buildSummary:
-      "A portfolio concept demonstrating streaming AI UI, citation-first copilot patterns, and RAG workflow architecture for product teams.",
+      "Frontend-first portfolio demo: Next.js 15 with Zustand and localStorage persistence — no Supabase, vector store, or production backend.",
     problem:
-      "This concept explores how PM teams drowning in feedback across Slack, support tickets, and analytics might synthesize signals into prioritized work with traceable AI outputs.",
+      "Product teams juggle PRDs, prioritization, and KPI monitoring across disconnected tools — this demo explores a single workspace UI for those PM workflows.",
     painPoints: [
-      "Roadmap debates driven by anecdotes instead of structured evidence",
-      "Hours spent writing PRDs and release notes from scratch",
-      "Disconnected tools for research, specs, and stakeholder updates",
-      "Low confidence in AI outputs without traceable source citations",
+      "PRDs take too long to draft from a raw feature idea",
+      "Prioritization debates lack a shared RICE-style view in the UI",
+      "KPI and anomaly signals are scattered across dashboards",
+      "Copilot answers need workspace context (role, goals, recent PRDs)",
     ],
     architecture: [
-      "RAG pipeline over feedback, docs, and analytics events",
-      "Workflow engine orchestrating summarization, clustering, and drafting",
-      "Vector store with tenant isolation and retention policies",
-      "Human-in-the-loop review before publishing roadmap changes",
+      "Next.js 15 App Router with TypeScript and cookie-based route guards",
+      "Zustand store with localStorage for workspace, PRDs, and chat history",
+      "Vercel AI SDK streaming routes for PRD generation and copilot chat",
+      "Groq (`llama-3.3-70b-versatile`) when `GROQ_API_KEY` is set; mock streaming fallback otherwise",
     ],
     frontendChallenges: [
-      "Streaming AI responses with editable structured outputs",
-      "Side-by-side source citation UI for trust and auditability",
-      "Complex filtering across themes, segments, and release trains",
-      "Optimistic UI for collaborative roadmap editing",
+      "Streaming PRD output into editable section cards during generation",
+      "Copilot chat with workspace context sidebar and suggested prompt chips",
+      "Dashboard layout combining KPI cards, RICE table, charts, and AI recommendation cards",
+      "Analytics page with MRR, retention cohorts, funnel, churn, and anomaly alert cards",
+      "Dark-theme marketing landing page with features and pricing tiers",
     ],
     uxProcess: [
-      "Designed high-trust AI interaction patterns for PM workflows",
-      "Built citation-first layouts to surface source traceability",
-      "Exposed prompt templates as guided, editable workflows",
-      "Prototyped onboarding that demonstrates core value quickly",
+      "Built marketing landing with six advertised PM workflows and pricing CTAs",
+      "Shipped live modules: dashboard, AI PRD generator, copilot, and KPI analytics",
+      "Added mock auth flow (login, signup, onboarding) with demo credentials",
+      "Marked roadmap, feedback, team, and settings as coming soon in the sidebar",
     ],
     scalability: [
-      "Async job queue for large document ingestion batches",
-      "Per-tenant rate limiting on model inference",
-      "Prompt versioning and evaluation harness in CI",
-      "Cost monitoring per workspace with usage alerts",
-    ],
-    technologies: [
-      "Next.js",
-      "TypeScript",
-      "OpenAI",
-      "Supabase",
-      "pgvector",
-      "Tailwind CSS",
-      "Vercel",
+      "No real database — all workspace state persists in the browser via localStorage",
+      "Mock auth accepts any email/password; demo login is `demo@prodpilot.ai` / `demo123`",
+      "In-memory rate limiting (10 req/min per IP) on AI API routes",
+      "Roadmap, feedback intelligence, and team collaboration are not implemented in this demo",
     ],
     highlights: [
-      { label: "Deliverable", value: "Streaming copilot UI" },
-      { label: "Deliverable", value: "RAG workflow" },
-      { label: "Deliverable", value: "Citation interface" },
-      { label: "Deploy", value: "Vercel" },
+      { label: "Live module", value: "Dashboard & RICE table" },
+      { label: "Live module", value: "AI PRD generator" },
+      { label: "Live module", value: "Streaming copilot" },
+      { label: "Live module", value: "KPI analytics" },
     ],
-    variant: "ai",
+  },
+  {
+    slug: "campus-vote",
+    projectId: "campus-vote",
+    summary:
+      "Live CampusVote NG demo on Vercel — a Nigerian campus election platform with public election discovery, student voting flows, live results charts, and admin election management. All data is mocked via MSW.",
+    buildSummary:
+      "Frontend-only portfolio demo: React 19, TypeScript, and Vite with no live backend or real vote tallying service.",
+    problem:
+      "Campus elections often rely on paper ballots or fragmented tools — students and admins need a single, mobile-friendly interface to discover elections, cast votes, and monitor turnout.",
+    painPoints: [
+      "Students need a clear path from election discovery to ballot confirmation",
+      "Duplicate voting must be blocked in the UI with immediate feedback",
+      "Admins need to create elections, approve candidates, and watch turnout in one place",
+      "Results should update frequently enough to feel live during an active election",
+    ],
+    architecture: [
+      "React 19 + TypeScript + Vite single-page application",
+      "MSW mock API with TanStack Query for elections, votes, and analytics",
+      "Zustand for auth session persistence; role-based route guards (student, candidate, admin)",
+      "Shadcn-style Radix UI + Tailwind CSS v4 with Framer Motion",
+    ],
+    frontendChallenges: [
+      "Single-select voting flow with confirmation dialog and duplicate-vote prevention",
+      "Live results page with bar/pie charts, animated counters, and 5-second polling refresh",
+      "Public explore page with search, institution/category filters, and status tabs",
+      "Admin election CRUD, candidate approval, and analytics dashboard",
+      "Mobile bottom nav for students and desktop sidebar for admin layouts",
+    ],
+    uxProcess: [
+      "Built public landing with platform stats and featured active elections",
+      "Mapped student journey: dashboard → ballot → confirmation → results",
+      "Added registration with matric verification step (mock) and password recovery UI",
+      "Designed admin shell for election management, candidate approval, and analytics",
+    ],
+    scalability: [
+      "All elections and votes are mocked in-memory via MSW — no production database",
+      "Demo accounts: student, candidate, and admin roles with preset credentials",
+      "No facial/QR verification, push notifications, offline voting, or multi-school tenancy",
+      "Phase 2 notes Supabase backend with RLS — not implemented in this demo",
+    ],
+    highlights: [
+      { label: "Live module", value: "Election discovery" },
+      { label: "Live module", value: "Student voting flow" },
+      { label: "Live module", value: "Live results charts" },
+      { label: "Live module", value: "Admin dashboard" },
+    ],
   },
 ];
+
+export function getProjectForCaseStudy(study: CaseStudy): Project | undefined {
+  return projects.find((project) => project.id === study.projectId);
+}
+
+export function getCaseStudyTitle(study: CaseStudy): string {
+  return getProjectForCaseStudy(study)?.title ?? study.slug;
+}
 
 export function getCaseStudy(slug: string): CaseStudy | undefined {
   return caseStudies.find((study) => study.slug === slug);

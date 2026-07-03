@@ -11,7 +11,7 @@ import {
   Sun,
   User,
 } from "lucide-react";
-import { caseStudies } from "@/data/caseStudies";
+import { caseStudies, getCaseStudyTitle } from "@/data/caseStudies";
 import { getLiveDemoProjects } from "@/data/projects";
 import { navItems, site } from "@/data/site";
 import { useScrollSpy } from "@/hooks/useScrollSpy";
@@ -111,7 +111,7 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
               }}
             >
               <BookOpen className="size-4" />
-              {study.title}
+              {getCaseStudyTitle(study)}
             </CommandItem>
           ))}
         </CommandGroup>

@@ -10,7 +10,7 @@ export const site = {
   tagline:
     "Full Stack and React Native engineer exploring fintech and AI through concept products, portfolio demos, and production-quality code.",
   shortBio:
-    "Product-focused engineer working across fintech, AI, and mobile — with an emphasis on scalable architecture, polished UI, and modern React ecosystems.",
+    "",
   demoNote:
     "Projects with live demos are deployed on Vercel. Others are concept builds showcasing architecture and UI craft.",
   email: "amos.eden56@gmail.com",

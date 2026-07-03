@@ -1,6 +1,11 @@
 import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
-import { getAdjacentCaseStudies, getCaseStudy } from "@/data/caseStudies";
+import {
+  getAdjacentCaseStudies,
+  getCaseStudy,
+  getCaseStudyTitle,
+  getProjectForCaseStudy,
+} from "@/data/caseStudies";
 import { site } from "@/data/site";
 import { DashboardMockup } from "@/components/shared/DashboardMockup";
 import {
@@ -32,12 +37,14 @@ export function CaseStudyPage() {
     return <NotFoundPage />;
   }
 
+  const project = getProjectForCaseStudy(study);
+  const title = getCaseStudyTitle(study);
   const { prev, next } = getAdjacentCaseStudies(study.slug);
 
   return (
     <>
       <Seo
-        title={`${study.title} — Case Study | ${site.name}`}
+        title={`${title} — Case Study | ${site.name}`}
         description={study.summary}
         url={`${site.seo.url}/case-studies/${study.slug}`}
         type="article"
@@ -55,24 +62,24 @@ export function CaseStudyPage() {
           <div className="space-y-4">
             <div className="flex flex-wrap items-center gap-2">
               <p className="text-primary text-sm font-medium uppercase">Case Study</p>
-              <ProjectStatusBadge status={study.status} />
+              {project && <ProjectStatusBadge status={project.status} />}
             </div>
             <h1 className="text-4xl font-semibold tracking-tight text-balance md:text-5xl">
-              {study.title}
+              {title}
             </h1>
             <p className="text-muted-foreground text-lg leading-relaxed">{study.summary}</p>
             <p className="text-foreground text-base font-medium">{study.buildSummary}</p>
-            {study.liveUrl && (
+            {project?.liveUrl && (
               <Button asChild size="lg">
-                <a href={study.liveUrl} target="_blank" rel="noreferrer">
+                <a href={project.liveUrl} target="_blank" rel="noreferrer">
                   View live demo
                   <ExternalLink className="size-4" />
                 </a>
               </Button>
             )}
-            <TechBadges items={study.technologies} />
+            {project && <TechBadges items={project.technologies} />}
           </div>
-          <DashboardMockup variant={study.variant} />
+          {project && <DashboardMockup variant={project.variant} />}
         </div>
       </Section>
 
@@ -167,7 +174,7 @@ export function CaseStudyPage() {
           <Button asChild variant="outline">
             <Link to={`/case-studies/${prev.slug}`}>
               <ArrowLeft className="size-4" />
-              {prev.title}
+              {getCaseStudyTitle(prev)}
             </Link>
           </Button>
         ) : (
@@ -176,7 +183,7 @@ export function CaseStudyPage() {
         {next && (
           <Button asChild variant="outline" className="sm:ml-auto">
             <Link to={`/case-studies/${next.slug}`}>
-              {next.title}
+              {getCaseStudyTitle(next)}
               <ArrowRight className="size-4" />
             </Link>
           </Button>
