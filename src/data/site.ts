@@ -1,34 +1,33 @@
 export type SocialLink = {
   label: string;
   href: string;
-  icon: "github" | "linkedin" | "twitter" | "mail" | "calendar";
+  icon: "github" | "linkedin" | "twitter" | "mail";
 };
 
 export const site = {
   name: "Eden Amos",
   title: "Full Stack & React Native Mobile App Engineer",
   tagline:
-    "Full Stack and React Native engineer exploring fintech and AI through concept products, portfolio demos, and production-quality code.",
+    "Full Stack and React Native engineer shipping fintech, AI, and SME product demos with production-quality code.",
   shortBio:
-    "",
+    "Full Stack and React Native engineer building fintech, AI, and SME product UIs. I ship live demos with clear architecture and honest scope — including FreBob, OpenBank NG, and CampusVote NG.",
   demoNote:
-    "Projects with live demos are deployed on Vercel. Others are concept builds showcasing architecture and UI craft.",
+    "Featured projects include live demos on Vercel and Render, with case studies that document real architecture and UI decisions.",
   email: "amos.eden56@gmail.com",
   social: [
     { label: "GitHub", href: "https://github.com/El-idn", icon: "github" },
     { label: "LinkedIn", href: "https://www.linkedin.com/in/amos-eden-7769a7244", icon: "linkedin" },
-    { label: "Calendly", href: "https://calendly.com/amos-eden56/30min", icon: "calendar" },
   ] satisfies SocialLink[],
   stats: [
-    { label: "Focus areas", value: 4, suffix: "" },
-    { label: "Core stack", value: 3, suffix: "" },
-    { label: "Deployment", value: 1, suffix: "" },
+    { label: "Live demos", value: 5, suffix: "" },
+    { label: "Case studies", value: 4, suffix: "" },
+    { label: "Focus", value: 1, suffix: "" },
   ],
-  statLabels: ["Fintech · AI · Mobile · Web", "React · RN · Node", "Vercel"],
+  statLabels: ["5 shipped", "4 walkthroughs", "Fintech · AI · Mobile"],
   seo: {
     title: "Eden Amos — Full Stack & React Native Engineer | Fintech & AI Products",
     description:
-      "Full Stack and React Native engineer showcasing fintech and AI work through portfolio demos, concept builds, and open-source projects on Vercel.",
+      "Full Stack and React Native engineer showcasing fintech and AI work through live demos, technical case studies, and open-source projects.",
     url: "https://amoseden.dev",
     ogImage: "/og-image.svg",
   },

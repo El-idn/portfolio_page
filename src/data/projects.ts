@@ -1,5 +1,6 @@
 import { site } from "@/data/site";
 import campusVoteScreenshot from "@/assets/CampusVote.png";
+import frebobScreenshot from "@/assets/FreBob.png";
 import openBankingScreenshot from "@/assets/OpenBanking.png";
 import portfolioScreenshot from "@/assets/PortfolioPage.png";
 import prodPilotScreenshot from "@/assets/ProdPilot.png";
@@ -14,7 +15,7 @@ export type Project = {
   category: ProjectCategory;
   status: ProjectStatus;
   technologies: string[];
-  screenshot: string;
+  screenshot?: string;
   highlights: { label: string; value: string }[];
   caseStudySlug?: string;
   repoUrl?: string;
@@ -42,6 +43,35 @@ export const projects: Project[] = [
     repoUrl: "https://github.com/El-idn/portfolio_page",
     screenshot: portfolioScreenshot,
     variant: "hero",
+  },
+  {
+    id: "frebob",
+    title: "FreBob",
+    description:
+      "Live Expo React Native business app on Render — WhatsApp-style order capture, stock and payments, receipt scan, and Ask Bob chat. Supabase auth with a Node.js API on Render.",
+    category: "Full Stack",
+    status: "shipped",
+    technologies: [
+      "Expo",
+      "React Native",
+      "TypeScript",
+      "Node.js",
+      "Supabase",
+      "Zustand",
+      "Expo Router",
+      "Render",
+    ],
+    highlights: [
+      { label: "Scope", value: "Business ops mobile" },
+      { label: "Auth", value: "Supabase" },
+      { label: "API", value: "Node.js · Express" },
+      { label: "Web", value: "Expo web · Render" },
+    ],
+    caseStudySlug: "frebob",
+    repoUrl: "https://github.com/El-idn/FreBob",
+    liveUrl: "https://frebob-web.onrender.com",
+    screenshot: frebobScreenshot,
+    variant: "wallet",
   },
   {
     id: "open-banking",

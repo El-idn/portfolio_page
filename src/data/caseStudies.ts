@@ -156,6 +156,53 @@ export const caseStudies: CaseStudy[] = [
       { label: "Live module", value: "Admin dashboard" },
     ],
   },
+  {
+    slug: "frebob",
+    projectId: "frebob",
+    summary:
+      "Live FreBob demo on Render — an Expo React Native business app for Nigerian SMEs with WhatsApp-style order capture, stock and payments, receipt scan, and Ask Bob chat. Supabase auth with a Render API backend.",
+    buildSummary:
+      "Cross-platform Expo app (mobile + React Native Web) on Render, syncing through a Node.js Express frebob-backend.",
+    problem:
+      "Small Nigerian businesses take orders over WhatsApp and SMS, then lose track of partial payments, stock, and customer balances across chats and notebooks.",
+    painPoints: [
+      "Orders and payments live in chat threads instead of a structured ledger",
+      "Partial payments leave unclear customer balances",
+      "Stock and sales memory are hard to query in plain language",
+      "Receipt photos need a review step before they become trusted records",
+    ],
+    architecture: [
+      "Expo Router + TypeScript app shared across Android, iOS, and web",
+      "Supabase email/password auth with JWT bootstrap against the Render API",
+      "Zustand + AsyncStorage for local state; syncFromApi loads orders, customers, and stock",
+      "Separate Node.js (Express) frebob-backend on Render for business CRUD and seeding",
+    ],
+    frontendChallenges: [
+      "Capture → Review → Approve flow that only writes after explicit approval",
+      "WhatsApp simulation UI labeled honestly (not a live WhatsApp Business API)",
+      "Side-by-side review of original chat/receipt fields before saving",
+      "Ask Bob chat with language chips for English and Nigerian Pidgin queries",
+      "Onboarding: language pick → business setup → WhatsApp access seeds sample data",
+    ],
+    uxProcess: [
+      "Splash and auth with Sign up / Sign in plus Explore Demo hatch for sample data",
+      "Home dashboard metrics after API sync or demo seed",
+      "Mapped ops modules: orders, inventory, customers, business memory, notifications, settings",
+      "Receipt scan path via camera, gallery, or demo extract into the same review pipeline",
+    ],
+    scalability: [
+      "WhatsApp and SMS paths are simulations — no live WhatsApp Business API in this build",
+      "Voice Ask Bob is honest about YarnGPT not being claimed yet",
+      "Explore Demo sample data is optional and not persisted across cold starts",
+      "Web deploys as Expo static export on Render; mobile builds via EAS",
+    ],
+    highlights: [
+      { label: "Live module", value: "Order capture & review" },
+      { label: "Live module", value: "Stock & payments" },
+      { label: "Live module", value: "Ask Bob chat" },
+      { label: "Live module", value: "Receipt scan" },
+    ],
+  },
 ];
 
 export function getProjectForCaseStudy(study: CaseStudy): Project | undefined {

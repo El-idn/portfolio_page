@@ -5,9 +5,10 @@ import { cn } from "@/lib/utils";
 
 type ProjectScreenshotProps = {
   title: string;
-  screenshot: string;
+  screenshot?: string;
   domain: string;
-  technologies: string[];
+  technologies?: string[];
+  showTech?: boolean;
   className?: string;
 };
 
@@ -15,10 +16,12 @@ export function ProjectScreenshot({
   title,
   screenshot,
   domain,
-  technologies,
+  technologies = [],
+  showTech = true,
   className,
 }: ProjectScreenshotProps) {
   const [imageError, setImageError] = useState(false);
+  const showPlaceholder = !screenshot || imageError;
 
   return (
     <div className={cn("space-y-4", className)}>
@@ -35,7 +38,7 @@ export function ProjectScreenshot({
           <span className="text-muted-foreground ml-2 truncate text-xs">{domain}</span>
         </div>
         <div className="bg-muted/30 aspect-[16/10] w-full overflow-hidden">
-          {imageError ? (
+          {showPlaceholder ? (
             <div className="text-muted-foreground flex h-full flex-col items-center justify-center gap-2 p-6 text-center">
               <ImageIcon className="size-8 opacity-50" />
               <p className="text-sm">Screenshot coming soon</p>
@@ -44,14 +47,14 @@ export function ProjectScreenshot({
             <img
               src={screenshot}
               alt={`${title} screenshot`}
-              className="h-full w-full object-cover object-top"
+              className="h-full w-full object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.02]"
               loading="lazy"
               onError={() => setImageError(true)}
             />
           )}
         </div>
       </div>
-      <TechBadges items={technologies} />
+      {showTech && technologies.length > 0 && <TechBadges items={technologies} />}
     </div>
   );
 }

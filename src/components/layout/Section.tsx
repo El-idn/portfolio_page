@@ -1,5 +1,8 @@
 import type { ReactNode } from "react";
+import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
+import { getFadeUp, getStaggerContainer, viewportOnce } from "@/lib/motion";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 
 type SectionProps = {
   id: string;
@@ -31,20 +34,43 @@ export function SectionHeader({
   description,
   align = "left",
 }: SectionHeaderProps) {
+  const reducedMotion = useReducedMotion();
+  const container = getStaggerContainer(reducedMotion);
+  const item = getFadeUp(reducedMotion);
+
   return (
-    <div
+    <motion.div
       className={cn(
         "mb-12 max-w-2xl space-y-3",
         align === "center" && "mx-auto text-center",
       )}
+      variants={container}
+      initial="hidden"
+      whileInView="show"
+      viewport={viewportOnce}
     >
       {eyebrow && (
-        <p className="text-primary text-sm font-medium tracking-wide uppercase">{eyebrow}</p>
+        <motion.p
+          variants={item}
+          className="text-primary text-sm font-medium tracking-wide uppercase"
+        >
+          {eyebrow}
+        </motion.p>
       )}
-      <h2 className="text-3xl font-semibold tracking-tight text-balance md:text-4xl">{title}</h2>
+      <motion.h2
+        variants={item}
+        className="text-3xl font-semibold tracking-tight text-balance md:text-4xl"
+      >
+        {title}
+      </motion.h2>
       {description && (
-        <p className="text-muted-foreground text-lg leading-relaxed text-balance">{description}</p>
+        <motion.p
+          variants={item}
+          className="text-muted-foreground text-lg leading-relaxed text-balance"
+        >
+          {description}
+        </motion.p>
       )}
-    </div>
+    </motion.div>
   );
 }
