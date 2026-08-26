@@ -23,8 +23,8 @@ export function ContactSection() {
     <Section id="contact">
       <SectionHeader
         eyebrow="Contact"
-        title="Let's build modern digital products."
-        description="Open to product collaborations, and high-impact freelance work."
+        title="Let’s build something sharp."
+        description="Open for collaborations and freelance builds."
         align="center"
       />
 

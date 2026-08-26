@@ -7,6 +7,8 @@ import {
   getProjectForCaseStudy,
 } from "@/data/caseStudies";
 import { site } from "@/data/site";
+import { useScrollSpy } from "@/hooks/useScrollSpy";
+import { cn } from "@/lib/utils";
 import { DashboardMockup } from "@/components/shared/DashboardMockup";
 import {
   HighlightBadge,
@@ -21,17 +23,20 @@ import { NotFoundPage } from "@/pages/NotFoundPage";
 
 const sections = [
   { id: "problem", title: "Problem" },
-  { id: "pain-points", title: "Pain Points" },
+  { id: "pain-points", title: "Pain points" },
   { id: "architecture", title: "Architecture" },
-  { id: "frontend", title: "Frontend Challenges" },
-  { id: "ux", title: "UI/UX Process" },
-  { id: "scalability", title: "Scalability" },
+  { id: "frontend", title: "Frontend" },
+  { id: "ux", title: "UX" },
+  { id: "scalability", title: "Limits" },
   { id: "highlights", title: "What I Built" },
 ] as const;
+
+const sectionIds = sections.map((section) => section.id);
 
 export function CaseStudyPage() {
   const { slug } = useParams<{ slug: string }>();
   const study = slug ? getCaseStudy(slug) : undefined;
+  const activeId = useScrollSpy(sectionIds);
 
   if (!study) {
     return <NotFoundPage />;
@@ -85,15 +90,20 @@ export function CaseStudyPage() {
 
       <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-20 sm:px-6 lg:grid-cols-[220px_1fr] lg:px-8">
         <aside className="hidden lg:block">
-          <nav className="sticky top-28 space-y-2">
-            <p className="text-muted-foreground mb-3 text-xs font-medium uppercase tracking-wide">
+          <nav className="border-border sticky top-28 space-y-1 border-l pl-0">
+            <p className="text-muted-foreground mb-3 px-3 text-xs font-medium uppercase tracking-wide">
               On this page
             </p>
             {sections.map((section) => (
               <a
                 key={section.id}
                 href={`#${section.id}`}
-                className="text-muted-foreground hover:text-primary block text-sm transition-colors"
+                className={cn(
+                  "relative -ml-px block rounded-r-md px-3 py-1.5 text-sm transition-colors",
+                  activeId === section.id
+                    ? "text-foreground before:bg-primary font-medium before:absolute before:top-1/2 before:left-0 before:h-3.5 before:w-0.5 before:-translate-y-1/2 before:rounded-full before:content-['']"
+                    : "text-muted-foreground hover:text-foreground",
+                )}
               >
                 {section.title}
               </a>
@@ -108,7 +118,7 @@ export function CaseStudyPage() {
           </section>
 
           <section id="pain-points" className="scroll-mt-28 space-y-3">
-            <h2 className="text-2xl font-semibold">User Pain Points</h2>
+            <h2 className="text-2xl font-semibold">Pain points</h2>
             <ul className="text-muted-foreground list-disc space-y-2 pl-5 leading-relaxed">
               {study.painPoints.map((point) => (
                 <li key={point}>{point}</li>
@@ -117,7 +127,7 @@ export function CaseStudyPage() {
           </section>
 
           <section id="architecture" className="scroll-mt-28 space-y-3">
-            <h2 className="text-2xl font-semibold">Architecture Decisions</h2>
+            <h2 className="text-2xl font-semibold">Architecture</h2>
             <ul className="text-muted-foreground list-disc space-y-2 pl-5 leading-relaxed">
               {study.architecture.map((item) => (
                 <li key={item}>{item}</li>
@@ -126,7 +136,7 @@ export function CaseStudyPage() {
           </section>
 
           <section id="frontend" className="scroll-mt-28 space-y-3">
-            <h2 className="text-2xl font-semibold">Frontend Challenges</h2>
+            <h2 className="text-2xl font-semibold">Frontend</h2>
             <ul className="text-muted-foreground list-disc space-y-2 pl-5 leading-relaxed">
               {study.frontendChallenges.map((item) => (
                 <li key={item}>{item}</li>
@@ -135,7 +145,7 @@ export function CaseStudyPage() {
           </section>
 
           <section id="ux" className="scroll-mt-28 space-y-3">
-            <h2 className="text-2xl font-semibold">UI/UX Process</h2>
+            <h2 className="text-2xl font-semibold">UX</h2>
             <ul className="text-muted-foreground list-disc space-y-2 pl-5 leading-relaxed">
               {study.uxProcess.map((item) => (
                 <li key={item}>{item}</li>
@@ -144,7 +154,7 @@ export function CaseStudyPage() {
           </section>
 
           <section id="scalability" className="scroll-mt-28 space-y-3">
-            <h2 className="text-2xl font-semibold">Scalability Considerations</h2>
+            <h2 className="text-2xl font-semibold">Limits</h2>
             <ul className="text-muted-foreground list-disc space-y-2 pl-5 leading-relaxed">
               {study.scalability.map((item) => (
                 <li key={item}>{item}</li>

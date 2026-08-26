@@ -14,8 +14,8 @@ export function ExpertiseSection() {
     <Section id="expertise">
       <SectionHeader
         eyebrow="Technical Expertise"
-        title="Engineering across the full product stack"
-        description="Focused capabilities across mobile, web, fintech platforms, AI copilots, and scalable product systems."
+        title="Stack I work in"
+        description="React Native, web, Node, fintech UIs, AI copilots."
       />
 
       <motion.div

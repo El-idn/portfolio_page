@@ -30,7 +30,7 @@ export const projects: Project[] = [
     id: "portfolio-site",
     title: "Portfolio Landing Page",
     description:
-      "This site — a React + Vite portfolio with case studies, command menu, and dark-mode design system, deployed on Vercel.",
+      "This site — React + Vite, case studies, command menu, dark-mode system. Live on Vercel.",
     category: "Full Stack",
     status: "shipped",
     technologies: ["React", "TypeScript", "Vite", "Tailwind", "Framer Motion"],
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     id: "frebob",
     title: "FreBob",
     description:
-      "Live Expo React Native business app on Render — WhatsApp-style order capture, stock and payments, receipt scan, and Ask Bob chat. Supabase auth with a Node.js API on Render.",
+      "Expo React Native business ops — WhatsApp-style orders, stock, payments, receipt scan, Ask Bob chat. Supabase auth + Node API on Render.",
     category: "Full Stack",
     status: "shipped",
     technologies: [
@@ -77,7 +77,7 @@ export const projects: Project[] = [
     id: "open-banking",
     title: "OpenBank NG",
     description:
-      "Live Nigerian open banking operations UI on Vercel — executive dashboard, customer/KYC views, transactions, consents, and role-based access. Mock data via MSW.",
+      "Nigerian open banking ops UI — dashboard, KYC, transactions, consents, RBAC. MSW mock API. Live on Vercel.",
     category: "Fintech",
     status: "shipped",
     technologies: [
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     id: "ai-pm-assistant",
     title: "ProdPilot AI",
     description:
-      "Live AI product management workspace on Vercel — dashboard, streaming PRD generator, copilot chat, and KPI analytics. Mock data with optional Groq AI; no real backend.",
+      "AI PM workspace — streaming PRDs, copilot chat, KPI views. Mock data + optional Groq. Live on Vercel.",
     category: "AI",
     status: "shipped",
     technologies: [
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     id: "campus-vote",
     title: "CampusVote NG",
     description:
-      "Live civic-tech voting platform on Vercel — election discovery, student ballot flows, live results charts, and admin election management. Mock data via MSW.",
+      "Campus voting platform — elections, ballots, live results, admin tools. MSW mock API. Live on Vercel.",
     category: "Full Stack",
     status: "shipped",
     technologies: [

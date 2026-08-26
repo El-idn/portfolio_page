@@ -14,6 +14,15 @@ export function useScrollSpy(sectionIds: string[], offset = 120) {
           current = id;
         }
       }
+
+      const doc = document.documentElement;
+      const nearBottom =
+        window.scrollY + window.innerHeight >= doc.scrollHeight - 48;
+
+      if (nearBottom && sectionIds.length > 0) {
+        current = sectionIds[sectionIds.length - 1]!;
+      }
+
       setActiveId(current);
     };
 

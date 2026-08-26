@@ -15,8 +15,8 @@ export function CaseStudiesSection() {
     <Section id="case-studies">
       <SectionHeader
         eyebrow="Case Studies"
-        title="Technical walkthroughs of live demos"
-        description="Architecture, UI, and engineering decisions behind shipped portfolio products — not production postmortems."
+        title="How they’re built"
+        description="Architecture, UI systems, and engineering tradeoffs."
       />
 
       <motion.div

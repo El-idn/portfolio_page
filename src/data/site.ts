@@ -8,11 +8,10 @@ export const site = {
   name: "Eden Amos",
   title: "Full Stack & React Native Mobile App Engineer",
   tagline:
-    "Full Stack and React Native engineer shipping fintech, AI, and SME product demos with production-quality code.",
+    "I build fintech, AI, and mobile products — live demos, clean architecture, honest scope.",
   shortBio:
-    "Full Stack and React Native engineer building fintech, AI, and SME product UIs. I ship live demos with clear architecture and honest scope — including FreBob, OpenBank NG, and CampusVote NG.",
-  demoNote:
-    "Featured projects include live demos on Vercel and Render, with case studies that document real architecture and UI decisions.",
+    "I design and ship product UIs end to end — from Expo mobile to Node APIs. Focus: fintech, SME tools, and AI-assisted workflows.",
+  demoNote: "All featured apps are live.",
   email: "amos.eden56@gmail.com",
   social: [
     { label: "GitHub", href: "https://github.com/El-idn", icon: "github" },
@@ -27,7 +26,7 @@ export const site = {
   seo: {
     title: "Eden Amos — Full Stack & React Native Engineer | Fintech & AI Products",
     description:
-      "Full Stack and React Native engineer showcasing fintech and AI work through live demos, technical case studies, and open-source projects.",
+      "Full Stack and React Native engineer. Live demos, technical case studies, and open-source work in fintech and AI.",
     url: "https://amoseden.dev",
     ogImage: "/og-image.svg",
   },

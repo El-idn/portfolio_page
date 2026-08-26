@@ -24,8 +24,8 @@ export function ProjectsSection() {
     <Section id="projects">
       <SectionHeader
         eyebrow="Featured Work"
-        title="Live demos across fintech, AI, and full stack engineering"
-        description="Explore shipped portfolio products with real deployments, clear architecture, and polished UI craft."
+        title="Selected work"
+        description="Click any card to open the live app."
       />
 
       <p className="text-muted-foreground border-border bg-muted/30 -mt-6 mb-8 rounded-lg border px-4 py-3 text-sm leading-relaxed">

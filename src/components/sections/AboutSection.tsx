@@ -14,7 +14,7 @@ export function AboutSection() {
       <div className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] lg:items-start">
         <SectionHeader
           eyebrow="About"
-          title="Product engineer focused on systems that scale"
+          title="Build systems that stay clear under complexity."
           description={site.shortBio}
         />
 
@@ -49,22 +49,20 @@ export function AboutSection() {
           variants={item}
           className="border-border bg-muted/30 rounded-xl border p-6"
         >
-          <h3 className="mb-2 font-semibold">Product engineering mindset</h3>
+          <h3 className="mb-2 font-semibold">How I build</h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            I approach demos the way I would production work — clear architecture,
-            thoughtful UX, and maintainable code. Every decision is weighed against user
-            impact, compliance constraints, and long-term scalability.
+            Clear architecture. Tight UX. Maintainable code. Tradeoffs weighed against
+            users, compliance, and scale — same bar as production work.
           </p>
         </motion.div>
         <motion.div
           variants={item}
           className="border-border bg-muted/30 rounded-xl border p-6"
         >
-          <h3 className="mb-2 font-semibold">What I ship in demos</h3>
+          <h3 className="mb-2 font-semibold">What I’ve shipped</h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            FreBob for SME ops on React Native, OpenBank NG for fintech dashboards,
-            ProdPilot AI for streaming copilots, and CampusVote NG for civic voting
-            flows — each with honest scope and production-minded UI craft.
+            FreBob for SME ops. OpenBank NG for fintech dashboards. ProdPilot AI for
+            streaming copilots. CampusVote NG for campus voting. Live demos, honest scope.
           </p>
         </motion.div>
       </motion.div>
