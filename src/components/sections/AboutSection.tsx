@@ -52,7 +52,7 @@ export function AboutSection() {
           <h3 className="mb-2 font-semibold">How I build</h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
             Clear architecture. Tight UX. Maintainable code. Tradeoffs weighed against
-            users, compliance, and scale — same bar as production work.
+            users, compliance, and performance.
           </p>
         </motion.div>
         <motion.div
@@ -61,7 +61,7 @@ export function AboutSection() {
         >
           <h3 className="mb-2 font-semibold">What I’ve shipped</h3>
           <p className="text-muted-foreground text-sm leading-relaxed">
-            FreBob for SME ops. OpenBank NG for fintech dashboards. ProdPilot AI for
+            FreBob for SME ops. OpenBank NG for ops dashboards. ProdPilot AI for
             streaming copilots. CampusVote NG for campus voting. Live demos, honest scope.
           </p>
         </motion.div>

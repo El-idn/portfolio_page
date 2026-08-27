@@ -1,4 +1,4 @@
-import { projects, type Project } from "@/data/projects";
+﻿import { projects, type Project } from "@/data/projects";
 
 export type CaseStudy = {
   slug: string;
@@ -19,11 +19,11 @@ export const caseStudies: CaseStudy[] = [
     slug: "open-banking-dashboard",
     projectId: "open-banking",
     summary:
-      "Open banking ops UI — dashboard, KYC, transactions, consents, RBAC. MSW mocks. Live on Vercel.",
+      "Ops dashboard UI - KYC, transactions, consents, RBAC. MSW mocks. Live on Vercel.",
     buildSummary:
       "React 19 + Vite SPA. MSW mocks. No live bank APIs.",
     problem:
-      "Ops teams need one place for customers, accounts, transactions, consents, and compliance. This UI is that place.",
+      "Customer, account, and compliance work lived in separate tools. Built one RBAC ops UI for the full open banking loop.",
     painPoints: [
       "Customers, accounts, and transactions live in separate tools",
       "Compliance and auditors need different views than admins",
@@ -50,7 +50,7 @@ export const caseStudies: CaseStudy[] = [
       "Phase 2: fraud center, audit logs, API monitoring, transfers, reports, notifications",
     ],
     scalability: [
-      "MSW mocks only — no production backend",
+      "MSW mocks only - no production backend",
       "No live bank APIs, PSD2, or real auth service",
       "Demo credentials + fixed MFA (123456); header role switcher",
       "Static SPA on Vercel",
@@ -66,16 +66,16 @@ export const caseStudies: CaseStudy[] = [
     slug: "ai-product-management-assistant",
     projectId: "ai-pm-assistant",
     summary:
-      "AI PM workspace — streaming PRDs, copilot chat, KPI views. Mock data + optional Groq. Live on Vercel.",
+      "AI PM workspace - streaming PRDs, copilot chat, KPI views. Mock data + optional Groq. Live on Vercel.",
     buildSummary:
       "Next.js 15 + Zustand + localStorage. No production backend.",
     problem:
-      "PMs juggle PRDs, prioritization, and KPIs across disconnected tools. One workspace UI for those flows.",
+      "PRDs, prioritization, and KPIs were scattered across tools. Built one streaming PM workspace - generate, chat, measure.",
     painPoints: [
       "PRDs take too long to draft from a raw idea",
       "Prioritization needs a shared RICE-style view",
       "KPI and anomaly signals are scattered",
-      "Copilot needs workspace context — role, goals, recent PRDs",
+      "Copilot needs workspace context - role, goals, recent PRDs",
     ],
     architecture: [
       "Next.js 15 App Router + TypeScript + cookie route guards",
@@ -97,7 +97,7 @@ export const caseStudies: CaseStudy[] = [
       "Roadmap, feedback, team, settings marked coming soon",
     ],
     scalability: [
-      "No database — workspace state in localStorage",
+      "No database - workspace state in localStorage",
       "Mock auth; demo login `demo@prodpilot.ai` / `demo123`",
       "In-memory rate limit: 10 req/min per IP on AI routes",
       "Roadmap, feedback, and team collab not built yet",
@@ -113,11 +113,11 @@ export const caseStudies: CaseStudy[] = [
     slug: "campus-vote",
     projectId: "campus-vote",
     summary:
-      "Campus voting platform — elections, ballots, live results, admin tools. MSW mocks. Live on Vercel.",
+      "Campus voting platform - elections, ballots, live results, admin tools. MSW mocks. Live on Vercel.",
     buildSummary:
       "React 19 + Vite SPA. MSW mocks. No live vote tally service.",
     problem:
-      "Campus elections still run on paper or scattered tools. Students and admins need one mobile-friendly place to discover elections, vote, and watch turnout.",
+      "Campus elections still ran on paper or fragmented tools. Built one flow: discover, vote, watch live results.",
     painPoints: [
       "Clear path from election discovery to ballot confirmation",
       "Duplicate votes blocked in the UI with instant feedback",
@@ -144,10 +144,10 @@ export const caseStudies: CaseStudy[] = [
       "Admin shell for elections, candidates, and analytics",
     ],
     scalability: [
-      "MSW in-memory mocks — no production database",
+      "MSW in-memory mocks - no production database",
       "Demo accounts for student, candidate, and admin",
       "No facial/QR verify, push, offline vote, or multi-school tenancy",
-      "Phase 2 notes Supabase + RLS — not built yet",
+      "Phase 2 notes Supabase + RLS - not built yet",
     ],
     highlights: [
       { label: "Live module", value: "Election discovery" },
@@ -160,11 +160,11 @@ export const caseStudies: CaseStudy[] = [
     slug: "frebob",
     projectId: "frebob",
     summary:
-      "Expo React Native business ops — WhatsApp-style orders, stock, payments, receipt scan, Ask Bob chat. Supabase auth + Node API on Render.",
+      "Expo React Native business ops - WhatsApp-style orders, stock, payments, receipt scan, Ask Bob chat. Supabase auth + Node API on Render.",
     buildSummary:
       "Expo (mobile + web) on Render. Node.js Express API. Supabase auth.",
     problem:
-      "Nigerian SMEs take orders over WhatsApp and SMS, then lose track of partial payments, stock, and balances across chats and notebooks.",
+      "SME orders lived in WhatsApp chaos - lost payments, stock, and balances. Built structured capture, stock, and Ask Bob.",
     painPoints: [
       "Orders and payments live in chat threads, not a ledger",
       "Partial payments leave unclear customer balances",
@@ -178,7 +178,7 @@ export const caseStudies: CaseStudy[] = [
       "Node.js Express frebob-backend on Render for CRUD and seeding",
     ],
     frontendChallenges: [
-      "Capture → Review → Approve — write only after explicit approval",
+      "Capture → Review → Approve - write only after explicit approval",
       "WhatsApp simulation UI (not a live WhatsApp Business API)",
       "Side-by-side review of chat/receipt fields before save",
       "Ask Bob chat with English and Nigerian Pidgin language chips",
@@ -191,7 +191,7 @@ export const caseStudies: CaseStudy[] = [
       "Receipt scan via camera, gallery, or demo extract into the same review pipeline",
     ],
     scalability: [
-      "WhatsApp and SMS are simulations — no live WhatsApp Business API",
+      "WhatsApp and SMS are simulations - no live WhatsApp Business API",
       "Voice Ask Bob does not claim YarnGPT yet",
       "Explore Demo sample data is optional; not persisted across cold starts",
       "Web: Expo static export on Render; mobile: EAS builds",

@@ -1,11 +1,11 @@
-import { site } from "@/data/site";
+﻿import { site } from "@/data/site";
 import campusVoteScreenshot from "@/assets/CampusVote.png";
 import frebobScreenshot from "@/assets/FreBob.png";
 import openBankingScreenshot from "@/assets/OpenBanking.png";
 import portfolioScreenshot from "@/assets/PortfolioPage.png";
 import prodPilotScreenshot from "@/assets/ProdPilot.png";
 
-export type ProjectCategory = "Fintech" | "AI" | "Full Stack";
+export type ProjectCategory = "Dashboards" | "AI" | "Full Stack";
 export type ProjectStatus = "concept-demo" | "shipped";
 
 export type Project = {
@@ -23,14 +23,14 @@ export type Project = {
   variant: "banking" | "ai" | "education" | "wallet" | "hero";
 };
 
-export const projectCategories: ProjectCategory[] = ["Fintech", "AI", "Full Stack"];
+export const projectCategories: ProjectCategory[] = ["Dashboards", "AI", "Full Stack"];
 
 export const projects: Project[] = [
   {
     id: "portfolio-site",
     title: "Portfolio Landing Page",
     description:
-      "This site — React + Vite, case studies, command menu, dark-mode system. Live on Vercel.",
+      "This site - React + Vite, case studies, command menu, dark-mode system. Live on Vercel.",
     category: "Full Stack",
     status: "shipped",
     technologies: ["React", "TypeScript", "Vite", "Tailwind", "Framer Motion"],
@@ -48,7 +48,7 @@ export const projects: Project[] = [
     id: "frebob",
     title: "FreBob",
     description:
-      "Expo React Native business ops — WhatsApp-style orders, stock, payments, receipt scan, Ask Bob chat. Supabase auth + Node API on Render.",
+      "Expo React Native business ops - WhatsApp-style orders, stock, payments, receipt scan, Ask Bob chat. Supabase auth + Node API on Render.",
     category: "Full Stack",
     status: "shipped",
     technologies: [
@@ -77,8 +77,8 @@ export const projects: Project[] = [
     id: "open-banking",
     title: "OpenBank NG",
     description:
-      "Nigerian open banking ops UI — dashboard, KYC, transactions, consents, RBAC. MSW mock API. Live on Vercel.",
-    category: "Fintech",
+      "Ops dashboard UI - KYC, transactions, consents, RBAC. MSW mock API. Live on Vercel.",
+    category: "Dashboards",
     status: "shipped",
     technologies: [
       "React",
@@ -105,7 +105,7 @@ export const projects: Project[] = [
     id: "ai-pm-assistant",
     title: "ProdPilot AI",
     description:
-      "AI PM workspace — streaming PRDs, copilot chat, KPI views. Mock data + optional Groq. Live on Vercel.",
+      "AI PM workspace - streaming PRDs, copilot chat, KPI views. Mock data + optional Groq. Live on Vercel.",
     category: "AI",
     status: "shipped",
     technologies: [
@@ -133,7 +133,7 @@ export const projects: Project[] = [
     id: "campus-vote",
     title: "CampusVote NG",
     description:
-      "Campus voting platform — elections, ballots, live results, admin tools. MSW mock API. Live on Vercel.",
+      "Campus voting platform - elections, ballots, live results, admin tools. MSW mock API. Live on Vercel.",
     category: "Full Stack",
     status: "shipped",
     technologies: [

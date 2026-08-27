@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+﻿import { Link, useParams } from "react-router-dom";
 import { ArrowLeft, ArrowRight, ExternalLink } from "lucide-react";
 import {
   getAdjacentCaseStudies,
@@ -49,7 +49,7 @@ export function CaseStudyPage() {
   return (
     <>
       <Seo
-        title={`${title} — Case Study | ${site.name}`}
+        title={`${title} - Case Study | ${site.name}`}
         description={study.summary}
         url={`${site.seo.url}/case-studies/${study.slug}`}
         type="article"

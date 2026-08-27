@@ -1,14 +1,11 @@
-import type { LucideIcon } from "lucide-react";
+﻿import type { LucideIcon } from "lucide-react";
 import {
   Brain,
-  Cpu,
+  Database,
   Layers,
   LineChart,
-  Network,
-  Palette,
   Server,
   Smartphone,
-  Zap,
 } from "lucide-react";
 
 export type ExpertiseArea = {
@@ -31,21 +28,21 @@ export const expertiseAreas: ExpertiseArea[] = [
     icon: Smartphone,
   },
   {
-    title: "Backend Systems",
+    title: "Backend & APIs",
     description:
-      "Node APIs, data models, and service boundaries that scale with the product.",
+      "Node APIs, REST design, data models, and clean third-party integrations.",
     icon: Server,
   },
   {
-    title: "API Architecture",
+    title: "Database",
     description:
-      "REST design, versioning, and clean integrations with third-party systems.",
-    icon: Network,
+      "Supabase/Postgres on shipped work; also comfortable with MongoDB and MySQL - modeling, indexes, clear queries.",
+    icon: Database,
   },
   {
-    title: "Fintech Systems",
+    title: "Product dashboards",
     description:
-      "Open banking flows, payment UX, and compliance-aware financial interfaces.",
+      "Data-dense ops UIs, RBAC, and complex workflows that stay scannable.",
     icon: LineChart,
   },
   {
@@ -53,23 +50,5 @@ export const expertiseAreas: ExpertiseArea[] = [
     description:
       "Streaming copilots, prompt workflows, and human-in-the-loop product UX.",
     icon: Brain,
-  },
-  {
-    title: "Performance Optimization",
-    description:
-      "Core Web Vitals, bundles, caching, and observability for snappy apps.",
-    icon: Zap,
-  },
-  {
-    title: "Microservices",
-    description:
-      "Event-driven services, async workers, and deploy patterns for uptime.",
-    icon: Cpu,
-  },
-  {
-    title: "Product Design Thinking",
-    description:
-      "Turn user problems into shippable increments with clear engineering tradeoffs.",
-    icon: Palette,
   },
 ];

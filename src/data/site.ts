@@ -1,4 +1,4 @@
-export type SocialLink = {
+﻿export type SocialLink = {
   label: string;
   href: string;
   icon: "github" | "linkedin" | "twitter" | "mail";
@@ -8,10 +8,11 @@ export const site = {
   name: "Eden Amos",
   title: "Full Stack & React Native Mobile App Engineer",
   tagline:
-    "I build fintech, AI, and mobile products — live demos, clean architecture, honest scope.",
+    "I turn messy product flows into clear UIs you can click - mobile, web, and AI.",
   shortBio:
-    "I design and ship product UIs end to end — from Expo mobile to Node APIs. Focus: fintech, SME tools, and AI-assisted workflows.",
+    "Full stack and React Native engineer. Expo mobile to Node APIs - ops tools, AI workflows, and complex dashboards.",
   demoNote: "All featured apps are live.",
+  availability: "Open for freelance · remote",
   email: "amos.eden56@gmail.com",
   social: [
     { label: "GitHub", href: "https://github.com/El-idn", icon: "github" },
@@ -20,13 +21,13 @@ export const site = {
   stats: [
     { label: "Live demos", value: 5, suffix: "" },
     { label: "Case studies", value: 4, suffix: "" },
-    { label: "Focus", value: 1, suffix: "" },
+    { label: "Craft", value: 1, suffix: "" },
   ],
-  statLabels: ["5 shipped", "4 walkthroughs", "Fintech · AI · Mobile"],
+  statLabels: ["5 shipped", "4 walkthroughs", "Mobile · Web · AI"],
   seo: {
-    title: "Eden Amos — Full Stack & React Native Engineer | Fintech & AI Products",
+    title: "Eden Amos - Full Stack & React Native Engineer",
     description:
-      "Full Stack and React Native engineer. Live demos, technical case studies, and open-source work in fintech and AI.",
+      "Full Stack and React Native engineer. Live demos, technical case studies, and product UIs across mobile, web, and AI.",
     url: "https://amoseden.dev",
     ogImage: "/og-image.svg",
   },

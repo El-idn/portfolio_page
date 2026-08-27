@@ -14,12 +14,12 @@ export function ExpertiseSection() {
     <Section id="expertise">
       <SectionHeader
         eyebrow="Technical Expertise"
-        title="Stack I work in"
-        description="React Native, web, Node, fintech UIs, AI copilots."
+        title="What I build with"
+        description="React Native, web, Node, AI copilots, product UIs."
       />
 
       <motion.div
-        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
+        className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
         variants={container}
         initial="hidden"
         whileInView="show"
