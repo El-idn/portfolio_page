@@ -7,7 +7,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function scrollToSection(id: string) {
   const element = document.getElementById(id);
-  if (element) {
+  if (element && (element.offsetParent !== null || element.getBoundingClientRect().height > 0)) {
     element.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 }

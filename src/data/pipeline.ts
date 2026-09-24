@@ -68,7 +68,7 @@ export const pipelineStages: PipelineStage[] = [
   "payload": {
     "recipient_id": "usr_99a82b",
     "amount_cents": 125000,
-    "currency": "USD"
+    "currency": "NG"
   }
 }`,
     },

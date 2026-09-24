@@ -8,7 +8,9 @@ export function useScrollSpy(sectionIds: string[], offset = 120) {
       let current = sectionIds[0] ?? "";
       for (const id of sectionIds) {
         const element = document.getElementById(id);
-        if (!element) continue;
+        if (!element || element.offsetParent === null || element.getBoundingClientRect().height === 0) {
+          continue;
+        }
         const top = element.getBoundingClientRect().top;
         if (top - offset <= 0) {
           current = id;
@@ -20,7 +22,13 @@ export function useScrollSpy(sectionIds: string[], offset = 120) {
         window.scrollY + window.innerHeight >= doc.scrollHeight - 48;
 
       if (nearBottom && sectionIds.length > 0) {
-        current = sectionIds[sectionIds.length - 1]!;
+        for (let i = sectionIds.length - 1; i >= 0; i--) {
+          const el = document.getElementById(sectionIds[i]);
+          if (el && el.offsetParent !== null && el.getBoundingClientRect().height > 0) {
+            current = sectionIds[i];
+            break;
+          }
+        }
       }
 
       setActiveId(current);

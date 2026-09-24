@@ -77,8 +77,13 @@ export function CommandMenu({ open, onOpenChange }: CommandMenuProps) {
         <CommandGroup heading="Navigation">
           {navItems.map((item) => {
             const Icon = iconMap[item.label as keyof typeof iconMap] ?? Home;
+            const isLargeOnly = item.href === "#architecture";
             return (
-              <CommandItem key={item.href} onSelect={() => goHomeSection(item.href)}>
+              <CommandItem
+                key={item.href}
+                onSelect={() => goHomeSection(item.href)}
+                className={cn(isLargeOnly && "hidden lg:flex")}
+              >
                 <Icon className="size-4" />
                 {item.label}
               </CommandItem>
@@ -177,6 +182,7 @@ export function Navbar() {
             {navItems.map((item) => {
               const id = item.href.replace("#", "");
               const isActive = isHome && activeId === id;
+              const isLargeOnly = item.href === "#architecture";
               return (
                 <Link
                   key={item.href}
@@ -184,6 +190,7 @@ export function Navbar() {
                   onClick={() => handleNavClick(item.href)}
                   className={cn(
                     "rounded-md px-3 py-2 text-sm transition-colors",
+                    isLargeOnly && "hidden lg:inline-flex",
                     isActive
                       ? "bg-accent text-accent-foreground"
                       : "text-muted-foreground hover:text-foreground",
@@ -218,22 +225,82 @@ export function Navbar() {
                   <Menu className="size-5" />
                 </Button>
               </SheetTrigger>
-              <SheetContent>
-                <SheetHeader>
-                  <SheetTitle>Navigation</SheetTitle>
-                </SheetHeader>
-                <div className="flex flex-col gap-2 p-4">
-                  {navItems.map((item) => (
-                    <SheetClose asChild key={item.href}>
-                      <Link
-                        to={{ pathname: "/", hash: item.href.replace("#", "") }}
-                        onClick={() => handleNavClick(item.href)}
-                        className="hover:bg-accent rounded-md px-3 py-2 text-sm"
+              <SheetContent className="flex flex-col justify-between gap-0 p-0">
+                <div>
+                  <SheetHeader className="p-5 pb-4 border-b border-border/60 text-left pr-10">
+                    <SheetTitle className="text-base font-semibold tracking-tight text-foreground">
+                      {site.name}
+                    </SheetTitle>
+                    <p className="text-xs text-muted-foreground font-medium">
+                      Full Stack &amp; React Native
+                    </p>
+                    <div className="mt-2 flex items-center gap-2 text-[11px] font-medium text-emerald-600 dark:text-emerald-400">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500" />
+                      </span>
+                      <span>{site.availability}</span>
+                    </div>
+                  </SheetHeader>
+
+                  <div className="flex flex-col gap-1.5 p-3 pt-4">
+                    {navItems
+                      .filter((item) => item.href !== "#architecture")
+                      .map((item) => {
+                        const id = item.href.replace("#", "");
+                        const isActive = isHome && activeId === id;
+                        const Icon = iconMap[item.label as keyof typeof iconMap] ?? Home;
+                        return (
+                          <SheetClose asChild key={item.href}>
+                            <Link
+                              to={{ pathname: "/", hash: id }}
+                              onClick={() => handleNavClick(item.href)}
+                              className={cn(
+                                "flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium transition-colors",
+                                isActive
+                                  ? "bg-accent text-accent-foreground font-semibold"
+                                  : "text-muted-foreground hover:bg-accent/60 hover:text-foreground",
+                              )}
+                            >
+                              <div
+                                className={cn(
+                                  "flex size-7 items-center justify-center rounded-md transition-colors",
+                                  isActive
+                                    ? "bg-primary text-primary-foreground"
+                                    : "bg-muted text-muted-foreground",
+                                )}
+                              >
+                                <Icon className="size-4" />
+                              </div>
+                              <span>{item.label}</span>
+                              {isActive && (
+                                <span className="ml-auto size-1.5 rounded-full bg-primary" />
+                              )}
+                            </Link>
+                          </SheetClose>
+                        );
+                      })}
+                  </div>
+                </div>
+
+                <div className="p-4 border-t border-border/60 mt-auto bg-muted/10">
+                  <div className="flex items-center justify-between text-xs text-muted-foreground mb-3">
+                    <span className="font-medium">Connect</span>
+                    <span className="font-mono text-[10.5px] opacity-80">{site.email}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    {site.social.map((soc) => (
+                      <a
+                        key={soc.label}
+                        href={soc.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1 text-center py-2 px-3 rounded-lg border border-border bg-card/70 hover:bg-accent text-xs font-medium text-foreground transition-colors"
                       >
-                        {item.label}
-                      </Link>
-                    </SheetClose>
-                  ))}
+                        {soc.label}
+                      </a>
+                    ))}
+                  </div>
                 </div>
               </SheetContent>
             </Sheet>
