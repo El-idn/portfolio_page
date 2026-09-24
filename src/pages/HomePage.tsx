@@ -6,6 +6,7 @@ import { scrollToSection } from "@/lib/utils";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { ProjectsSection } from "@/components/sections/ProjectsSection";
 import { CaseStudiesSection } from "@/components/sections/CaseStudiesSection";
+import { PipelineVisualizer } from "@/components/sections/PipelineVisualizer";
 import { ExpertiseSection } from "@/components/sections/ExpertiseSection";
 import { OutcomesSection } from "@/components/sections/OutcomesSection";
 import { AboutSection } from "@/components/sections/AboutSection";
@@ -32,6 +33,7 @@ export function HomePage() {
       <HeroSection />
       <ProjectsSection />
       <CaseStudiesSection />
+      <PipelineVisualizer />
       <ExpertiseSection />
       <OutcomesSection />
       <AboutSection />

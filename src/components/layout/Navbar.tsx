@@ -7,6 +7,7 @@ import {
   Home,
   Mail,
   Moon,
+  Network,
   Search,
   Sun,
   User,
@@ -37,12 +38,13 @@ import {
 } from "@/components/ui/sheet";
 import { Menu } from "lucide-react";
 
-const sectionIds = ["home", "projects", "case-studies", "about", "contact"];
+const sectionIds = ["home", "projects", "case-studies", "architecture", "about", "contact"];
 
 const iconMap = {
   Home,
   Projects: FolderKanban,
   "Case Studies": BookOpen,
+  Architecture: Network,
   About: User,
   Contact: Mail,
 };

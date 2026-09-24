@@ -1,4 +1,4 @@
-﻿export type SocialLink = {
+export type SocialLink = {
   label: string;
   href: string;
   icon: "github" | "linkedin" | "twitter" | "mail";
@@ -37,6 +37,7 @@ export const navItems = [
   { label: "Home", href: "#home" },
   { label: "Projects", href: "#projects" },
   { label: "Case Studies", href: "#case-studies" },
+  { label: "Architecture", href: "#architecture" },
   { label: "About", href: "#about" },
   { label: "Contact", href: "#contact" },
 ] as const;
